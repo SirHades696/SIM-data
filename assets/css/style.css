@@ -1,0 +1,8 @@
+#map {
+    height: 100vh; /* Altura del 100% de la ventana */
+    width: 100%; /* Ancho del 100% del contenedor */
+}
+body, html {
+    margin: 0;
+    padding: 0;
+}
