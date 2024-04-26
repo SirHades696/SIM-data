@@ -1,0 +1,151 @@
+/* Font */
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
+
+/* Design */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none; 
+}
+
+html {
+    background-color: #161b22;
+}
+
+body {
+    color: #272727;
+    font-family: "Quicksand", serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 1rem;
+}
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    color: #79c0ff;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.btn {
+    color: #ffffff;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #343941;
+}
+
+.card_btn {
+    color: #ffffff;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 4px;
+    font-weight: 400;
+    display: block;
+    width: 15%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #343941;
+}
+
+.card_btn:hover {
+    background: #677080;
+}
+
+
+.btn:hover {
+    background: #677080;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards_item {
+    display: flex;
+    padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+    .cards_item {
+        width: 50%;
+    }
+}
+
+@media (min-width: 56rem) {
+    .cards_item {
+        width: 33.3333%;
+    }
+}
+
+.card {
+    background-color: white;
+    border-radius: 1.25rem;
+    box-shadow: 0 20px 40px -14px rgba(248, 246, 246, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: solid 1px #79c0ff;
+}
+
+.card:hover {
+    transition: transform 0.3s ease-out;
+    transform: scale(1.1);
+  }
+
+.card_content {
+    padding: 1rem;
+    background: linear-gradient(to bottom left, #39464b 40%, #717172 100%);
+}
+
+.card_title {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin: 0px;
+}
+
+.card_text {
+    color: #ffffff;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.25rem;
+    font-weight: 400;
+    text-align: justify;
+}
+
+p {
+    margin: 1px;
+}
+
+span {
+    color: #79c0ff;
+}
