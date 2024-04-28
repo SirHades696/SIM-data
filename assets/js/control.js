@@ -114,6 +114,7 @@ fetch('layers/pob_indigena.geojson').then(r => r.json()).then(d => {
         colorCustom: ['#ffd3bf', '#fbb4b9', '#f768a1', '#c51b8a', '#7a0177'],
         legendTitle: 'Población de 5 años y más que habla alguna lengua indígena',
         legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
+        legendFooter: 'Elaborado a partir de: Censo de Población y Vivienda - INEGI, 2020.',
         onEachFeature: tooltip
     });
     layerControl.addOverlay(pob_ind, "Población indígena", "Zona de estudio");
@@ -156,7 +157,8 @@ fetch('layers/grado_marginacion.geojson').then(r => r.json()).then(d => {
         classes: ["Muy bajo", "Bajo", "Medio", "Alto", 'Muy alto'],
         field: 'GM_2020',
         colorRamp: ["#d7191c", "#a6d96a", "#ffffbf", "#fdae61", "#1a9641"],
-        legendTitle: 'Grado de marginación 2020',
+        legendTitle: 'Grado de marginación',
+        legendFooter: 'Elaborado a partir de: Censo de Población y Vivienda - INEGI, 2020.',
         legendAscending: true,
         onEachFeature: tooltip
     });
@@ -205,6 +207,7 @@ fetch('layers/tipo_manzanas.geojson').then(r => r.json()).then(d => {
             middle: "{none}",
             highest: 'Urbana',
         },
+        legendFooter: 'Elaborado a partir de: Marco Geoestadístico - INEGI, 2023.',
         onEachFeature: tooltip
     });
     layerControl.addOverlay(t_manz, "Tipo de manzanas", "Zona de estudio");
@@ -250,6 +253,7 @@ fetch('layers/pob_manzana.geojson').then(r => r.json()).then(d => {
         colorRamp: "YlOrBr",
         legendTitle: 'Población por manzana',
         legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
+        legendFooter: 'Elaborado a partir de: Censo de Población y Vivienda - INEGI, 2020.',      
         onEachFeature: tooltip
     });
     layerControl.addOverlay(pob_manz, "Población por manzana", "Zona de estudio");
@@ -296,6 +300,7 @@ fetch('layers/densidad_pob.geojson').then(r => r.json()).then(d => {
         reverseColorRamp: true,
         legendTitle: 'Densidad de población por m^2',
         legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
+        legendFooter: 'Elaborado a partir de: Censo de Población y Vivienda - INEGI, 2020.',
         onEachFeature: tooltip
     });
     layerControl.addOverlay(den_pob, "Densidad de población", "Zona de estudio");
@@ -350,7 +355,8 @@ fetch('layers/red_vial.geojson').then(r => r.json()).then(d => {
             middle: 'Secundaria',
             highest: 'Terciaria',
         },
-        onEachFeature: tooltip
+        onEachFeature: tooltip,
+        legendFooter: 'Elaborado a partir de: Red Nacional de Caminos RNC - INEGI, 2020.',
     });
     layerControl.addOverlay(red_vial, "Tipo de red vial", "Zona de estudio");
 });
@@ -396,6 +402,7 @@ fetch('layers/VIMR.geojson').then(r => r.json()).then(d => {
         reverseColorRamp: true,
         legendTitle: 'Demanda potencial (Valor índice medio)',
         onEachFeature: tooltip,
+        legendFooter: 'Elaborado a partir de: Censo de Población y Vivienda - INEGI, 2020.',
     });
     layerControl.addOverlay(dem_pot, "Demanda potencial", "Oferta y demanda");
 });
@@ -424,7 +431,8 @@ fetch('layers/oferta_potencial.geojson').then(r => r.json()).then(d => {
         colorRamp: "RdYlGn",
         legendTitle: 'Oferta potencial (Consultas)',
         legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
-        onEachFeature: tooltip
+        onEachFeature: tooltip,
+        legendFooter: 'Elaborado a partir de: Catálogo de Clave Única de Establecimientos de Salud (CLUES) - Secretaría de Salud, 2023.',
     });
     layerControl.addOverlay(ofe_pot, "Oferta potencial", "Oferta y demanda");
 });
@@ -457,7 +465,8 @@ fetch('layers/FD0_CLUES_RO.geojson').then(r => r.json()).then(d => {
             middle: '{low} - {high}',
             highest: '{low}',
         },
-        onEachFeature: tooltip
+        onEachFeature: tooltip,
+        
     });
 
     layerControl.addOverlay(ro_fd0, "Fricción de distancia = 0", "Restricción en el origen");
