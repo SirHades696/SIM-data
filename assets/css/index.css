@@ -13,6 +13,11 @@ a {
     text-decoration: none;
 }
 
+a.ref:hover {
+    color: #bf91f3;
+    text-decoration: underline;
+}
+
 html {
     background-color: #161b22;
 }
@@ -155,4 +160,8 @@ span {
 
 hr {
     margin: 30px auto;
+}
+
+.head_text {
+    padding:15px;
 }
