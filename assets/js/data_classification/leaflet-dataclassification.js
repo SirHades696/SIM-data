@@ -965,6 +965,48 @@ L.DataClassification = L.GeoJSON.extend({
                         div.textContent = "Muy Bajo";
                     }
                 });
+            }else if(self.options.id === "ro_fd05"){
+                var legendDataRows = document.querySelectorAll('.legendDataRow');
+                legendDataRows.forEach(function (row) {
+                    var icon = row.querySelector('svg');
+                    var div = icon.nextElementSibling;
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "5") {
+                        div.textContent = "0.75 - 1";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "4 - 5") {
+                        div.textContent = "0.5 - 0.75";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "3 - 4") {
+                        div.textContent = "0.25 - 0.5";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "2 - 3") {
+                        div.textContent = "0 - 0.25";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "2") {
+                        div.textContent = "0";
+                    }
+                });
+            }else if(self.options.id === "ro_fd1"){
+                var legendDataRows = document.querySelectorAll('.legendDataRow');
+                legendDataRows.forEach(function (row) {
+                    var icon = row.querySelector('svg');
+                    var div = icon.nextElementSibling;
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "5") {
+                        div.textContent = "0.75 - 1";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "4 - 5") {
+                        div.textContent = "0.5 - 0.75";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "3 - 4") {
+                        div.textContent = "0.25 - 0.5";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "2 - 3") {
+                        div.textContent = "0 - 0.25";
+                    }
+                    if (div && div.tagName === 'DIV' && div.textContent.trim() === "2") {
+                        div.textContent = "0";
+                    }
+                });
             }
 
         };
