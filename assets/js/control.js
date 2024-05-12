@@ -547,52 +547,52 @@ fetch('layers/FD1_CLUES_RO.geojson').then(r => r.json()).then(d => {
 });
 
 // --------------- Demanda potencial
-fetch('layers/VIMR.geojson').then(r => r.json()).then(d => {
-    var origstyle;
-    function highlight(e) {
-        origstyle = {
-            weight: e.target.options.weight
-        }
-        e.target.setStyle({
-            weight: 2
-        });
-    }
-    function resetStyle(e) {
-        e.target.setStyle(origstyle);
-    }
+// fetch('layers/VIMR.geojson').then(r => r.json()).then(d => {
+//     var origstyle;
+//     function highlight(e) {
+//         origstyle = {
+//             weight: e.target.options.weight
+//         }
+//         e.target.setStyle({
+//             weight: 2
+//         });
+//     }
+//     function resetStyle(e) {
+//         e.target.setStyle(origstyle);
+//     }
 
-    function tooltip(feature, layer) {
-        layer.on('mousemove',e=>{
-            e.target.getTooltip().setLatLng(e.latlng);
-        });
-        if (feature.properties) {
-            layer.bindTooltip(
-                "<strong>Clave geográfica: </strong>" + feature.properties.CVEGEO + "<br>" +
-                "<strong>Nombre del municipio: </strong>" + feature.properties.NOM_MUN + "<br>" +
-                "<strong>Nombre de la localidad: </strong>" + feature.properties.NOM_LOC + "<br>" +
-                "<strong>Demanda potencial: </strong>" + feature.properties.DEMPOT + "<br>" +
-                "<strong>Demanda potencial (N): </strong>" + feature.properties.DEMPOT_N);
-        }
-        layer.on({
-            mouseover: highlight,
-            mouseout: resetStyle
-        });
-    }
-    window.dem_pot_RO = L.dataClassification(d, {
-        style: { color: "black", weight: 0 },
-        id: "dem_pot_RO",
-        mode: 'jenks',
-        classes: 5,
-        field: 'DEMPOT_N',
-        colorRamp: "RdYlGn",
-        reverseColorRamp: true,
-        legendTitle: 'Demanda potencial Normalizado',
-        legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
-        onEachFeature: tooltip,
-        legendFooter: 'Elaborado a partir de: Censo de Población y Vivienda - INEGI, 2020.',
-    });
-    layerControl.addOverlay(dem_pot_RO, "Demanda potencial", "Restricción en el origen");
-});
+//     function tooltip(feature, layer) {
+//         layer.on('mousemove',e=>{
+//             e.target.getTooltip().setLatLng(e.latlng);
+//         });
+//         if (feature.properties) {
+//             layer.bindTooltip(
+//                 "<strong>Clave geográfica: </strong>" + feature.properties.CVEGEO + "<br>" +
+//                 "<strong>Nombre del municipio: </strong>" + feature.properties.NOM_MUN + "<br>" +
+//                 "<strong>Nombre de la localidad: </strong>" + feature.properties.NOM_LOC + "<br>" +
+//                 "<strong>Demanda potencial: </strong>" + feature.properties.DEMPOT + "<br>" +
+//                 "<strong>Demanda potencial (N): </strong>" + feature.properties.DEMPOT_N);
+//         }
+//         layer.on({
+//             mouseover: highlight,
+//             mouseout: resetStyle
+//         });
+//     }
+//     window.dem_pot_RO = L.dataClassification(d, {
+//         style: { color: "black", weight: 0 },
+//         id: "dem_pot_RO",
+//         mode: 'jenks',
+//         classes: 5,
+//         field: 'DEMPOT_N',
+//         colorRamp: "RdYlGn",
+//         reverseColorRamp: true,
+//         legendTitle: 'Demanda potencial Normalizado',
+//         legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
+//         onEachFeature: tooltip,
+//         legendFooter: 'Elaborado a partir de: Censo de Población y Vivienda - INEGI, 2020.',
+//     });
+//     layerControl.addOverlay(dem_pot_RO, "Demanda potencial", "Restricción en el origen");
+// });
 
 // --------------- RD Fricción de distancia 0
 fetch('layers/FD0_Manzanas_RD.geojson').then(r => r.json()).then(d => {
@@ -692,7 +692,7 @@ fetch('layers/FD05_Manzanas_RD.geojson').then(r => r.json()).then(d => {
     layerControl.addOverlay(rd_fd05, "Fricción de distancia = 0.5", "Restricción en el destino");
 });
 
-// --------------- RD Fricción de distancia 0
+// --------------- RD Fricción de distancia 1
 fetch('layers/FD1_Manzanas_RD.geojson').then(r => r.json()).then(d => {
     var origstyle;
     function highlight(e) {
@@ -742,33 +742,33 @@ fetch('layers/FD1_Manzanas_RD.geojson').then(r => r.json()).then(d => {
 });
 
 // --------------- Oferta potencial para RD
-fetch('layers/oferta_potencial.geojson').then(r => r.json()).then(d => {
-    function tooltip(feature, layer) {
-        if (feature.properties) {
-            layer.bindTooltip(
-                "<strong>Clave: </strong>" + feature.properties.CLUES + "<br>" +
-                "<strong>Nombre: </strong>" + feature.properties.NOMBRE_SS + "<br>" +
-                "<strong>Municipio: </strong>" + feature.properties.MUNICIPIO + "<br>" +
-                "<strong>Localidad: </strong>" + feature.properties.LOCALIDAD + "<br>" +
-                "<strong>Oferta potencial: </strong>" + feature.properties.Oferta);
-        }
-    }
-    window.ofe_potRD = L.dataClassification(d, {
-        style: { fillColor: '#B136E3' },
-        mode: 'jenks',
-        id: "ofe_potRD",
-        classes: 5,
-        pointMode: 'size',
-        pointSize: { min: 3, max: 12 },
-        pointShape: 'circle',
-        field: 'Oferta',
-        legendTitle: 'Oferta potencial (Consultas)',
-        legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
-        onEachFeature: tooltip,
-        legendFooter: 'Elaborado a partir de: Catálogo de Clave Única de Establecimientos de Salud (CLUES) - Secretaría de Salud, 2023.',
-    });
-    layerControl.addOverlay(ofe_potRD, "Oferta potencial", "Restricción en el destino");
-});
+// fetch('layers/oferta_potencial.geojson').then(r => r.json()).then(d => {
+//     function tooltip(feature, layer) {
+//         if (feature.properties) {
+//             layer.bindTooltip(
+//                 "<strong>Clave: </strong>" + feature.properties.CLUES + "<br>" +
+//                 "<strong>Nombre: </strong>" + feature.properties.NOMBRE_SS + "<br>" +
+//                 "<strong>Municipio: </strong>" + feature.properties.MUNICIPIO + "<br>" +
+//                 "<strong>Localidad: </strong>" + feature.properties.LOCALIDAD + "<br>" +
+//                 "<strong>Oferta potencial: </strong>" + feature.properties.Oferta);
+//         }
+//     }
+//     window.ofe_potRD = L.dataClassification(d, {
+//         style: { fillColor: '#B136E3' },
+//         mode: 'jenks',
+//         id: "ofe_potRD",
+//         classes: 5,
+//         pointMode: 'size',
+//         pointSize: { min: 3, max: 12 },
+//         pointShape: 'circle',
+//         field: 'Oferta',
+//         legendTitle: 'Oferta potencial (Consultas)',
+//         legendTemplate: { highest: '{low} y más', lowest: 'menor a {high}' },
+//         onEachFeature: tooltip,
+//         legendFooter: 'Elaborado a partir de: Catálogo de Clave Única de Establecimientos de Salud (CLUES) - Secretaría de Salud, 2023.',
+//     });
+//     layerControl.addOverlay(ofe_potRD, "Oferta potencial", "Restricción en el destino");
+// });
 
 var loader = L.control.loader().addTo(map);
 setTimeout(function () { loader.hide(); }, 30000);
