@@ -771,7 +771,7 @@ fetch('layers/oferta_potencial.geojson').then(r => r.json()).then(d => {
 });
 
 var loader = L.control.loader().addTo(map);
-setTimeout(function () { loader.hide(); }, 20000);
+setTimeout(function () { loader.hide(); }, 30000);
 
 map.on("overlayadd overlayremove", function (eventLayer) {
     // ------------------------- Remove legends
